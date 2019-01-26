@@ -1,0 +1,208 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+	height: 10vH;
+	width: 100px;
+	outline: black;
+	background-size: 100%, 100%;
+	background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+	content: '>';
+	font-size: 55px;
+	color: black;
+}
+
+.carousel-control-prev-icon:after {
+	content: '<';
+	font-size: 55px;
+	color: black;
+}
+
+#mail {
+	width: 300px;
+}
+
+.ul_head {
+	float: left;
+	list-style-type: none;
+	background-color: #dddddd;
+}
+
+.ul_head li {
+	float: left;
+	text-align: center;
+	width: 150px;
+}
+
+.ul_head li a{
+	 
+}
+
+.ul_head li a:hover {
+	 background-color: #AB7777; 
+}
+
+.ul_head li a:active {
+	 background-color: #B27575; 
+}
+
+table {
+	border: 1;
+}
+
+.noborder {
+	text-align: center;
+	vertical-align:center;
+	border: 0px #000000 solid;
+}
+
+.tableborder td {
+	text-align: center;
+	vertical-align:center;
+	border: 1px #000000 solid;
+}
+
+.tabtd {
+	text-align: center;
+	vertical-align:top;
+	border: 1px #000000 solid;
+}
+.calendar  font {
+	font-size: 17;
+}
+
+.past {
+	background-color:#CECDCD;
+}
+
+.submenu{
+	display: none;
+	margin:0;
+	padding:0;
+}
+
+.submenu li {
+	margin-left: 20px;
+	list-style-type:none;
+	content: "";
+	display: block;
+	margin-bottom: 1em;
+}
+
+.submenu a {
+	color: grey;
+}
+
+.submenu a:hover {
+	color: #FFFFFF;
+}
+
+nav li:hover .submenu {
+	display: inline-block;
+	color: #000;
+}
+
+body {
+position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        height: 100%;
+    margin:0;
+    padding:0;
+    background-size: 100% ;
+    width:100%;  
+    color:black;
+}
+body:before {
+        content: "";
+        position: fixed;
+        height: 100%; width: 100%;
+        background: url('img/background.png');
+        background-size: cover;
+        z-index: -1; /* Keep the background behind the content */     
+        -webkit-filter: blur(10px);
+    -webkit-background-size: cover; /* pour Chrome et Safari */
+    -moz-background-size: cover; /* pour Firefox */
+    -o-background-size: cover; /* pour Opera */
+    background-size: cover; /* version standardisée */
+    }
+	
+.lien {
+	font-size: 20px;
+	text-decoration: underline;
+	color: #000;
+}
+
+.petit {
+	font-size: 18px;
+}
+
+.lien:visited {
+	color: #000000;
+	text-decoration: underline;
+}
+
+.lien:hover {
+	color: #999999;
+	text-decoration: underline;
+}
+
+.alignmenu {
+	font-size: 17px;
+	margin-left: 27vW;
+	text-align: left;
+}
+
+#background {
+	height: 100vh;
+	text-align: center;
+	width: 66vw;
+	background-color: #BAC0EC;
+}
+
+#nameofyear {
+	text-align:center;
+	display: block;
+}
+
+#nameofyearofmonth {
+	text-align:center;
+	display: none;
+}
+
+#displayyear {
+	text-align:center;
+	display: block;
+}
+
+#displaymonth {
+	text-align:center; 
+	display: none;
+}
+
+@media all and (orientation: portrait) {
+	.calendar  font {
+		font-size: 50;
+	}
+	#displayyear {
+		text-align:center;
+		display: none;
+	}
+
+	#displaymonth {
+		text-align:center; 
+		display: block;
+	}
+	
+	#nameofyear {
+		text-align:center;
+		display: none;
+	}
+
+	#nameofyearofmonth {
+		text-align:center;
+		display: block;
+	}
+	
+}

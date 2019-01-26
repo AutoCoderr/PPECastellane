@@ -1,0 +1,109 @@
+<meta charset="utf-8">
+<title>Crack Calculator</title>
+<center>
+	actions : <input type="text" id="listaction"><br>
+	<br>
+	start : <input type="text" id="start"><br>
+	moves : <input type="text" id="moves"><br>
+	goal : <input type="text" id="goal"><br>
+	<input type="button" value="tester" onclick="getSoluce()">
+	<br>
+	<div id="result"></div>
+</center>
+<script>
+
+
+var limitBoucle = 10000;
+var bruteforce;
+var test;
+var start;
+var moves;
+var goal;
+var listaction;
+var result;
+
+function getSoluce(){
+	test = NaN;
+	/*var start = 0;
+	var moves = 4;
+	var goal = 8;
+	var listaction = ["+3","-4","/2","+4","+16","/2"];*/
+	start = parseInt(document.getElementById("start").value);
+	moves = parseInt(document.getElementById("moves").value);
+	goal = parseInt(document.getElementById("goal").value);
+	listaction = createArray(document.getElementById("listaction").value);
+	var boucle = 0;
+	while (test != goal & boucle < limitBoucle) {
+		bruteforce = new Array();
+		genBruteForce();
+		apply();
+		boucle += 1;
+	}
+	if (boucle < limitBoucle) {
+		result = "";
+		result += "start : "+start;
+		result += "<br>goal : "+goal;
+		result += "<br>moves : "+moves;
+		result += "<br>steps : <br>";
+		displayFinal();
+		setResult(result);
+	} else {
+		setResult("Resultat non trouvé après "+limitBoucle+" tentatives");
+	}
+}
+
+
+function apply() {
+	test = start;
+	for (var i=0;i<bruteforce.length;i++) {
+		if (bruteforce[i].substring(0,1) == "+") {
+			test += parseInt(bruteforce[i].substring(1,bruteforce[i].length));
+		} else if (bruteforce[i].substring(0,1) == "-") {
+			test -= parseInt(bruteforce[i].substring(1,bruteforce[i].length));
+		} else if (bruteforce[i].substring(0,1) == "/") {
+			test = test / parseInt(bruteforce[i].substring(1,bruteforce[i].length));
+		} else if (bruteforce[i].substring(0,1) == "*" | bruteforce[i].substring(0,1) == "x" | bruteforce[i].substring(0,1) == "X") {
+			test = test * parseInt(bruteforce[i].substring(1,bruteforce[i].length));
+		} else if (bruteforce[i] == "<<") {
+			test = parseInt(test.toString().substring(0,test.toString().length-1));
+		} else if (bruteforce[i].replace("=>","") != bruteforce[i]){
+			test = parseInt(remplace(test.toString(),bruteforce[i].split("=>")[0],bruteforce[i].split("=>")[1]));		
+		} else if (bruteforce[i] == "X2" | bruteforce[i] == "X²" | bruteforce[i] == "X^2") {
+			test = test**2;
+		} else {
+			test = parseInt(test.toString()+bruteforce[i]);		
+		}
+	}
+}
+
+function genBruteForce() {
+	var randomIndex;
+	var movesTmp = moves;
+	while(movesTmp > 0) {
+		randomIndex = Math.round((listaction.length-1)*Math.random());
+		bruteforce.push(listaction[randomIndex]);
+		movesTmp -= 1;
+	}
+}
+
+function displayFinal() {
+	for (var i=0;i<bruteforce.length;i++) {
+		result += "<br>"+bruteforce[i];
+	}
+}
+
+function setResult(html) {
+	document.getElementById("result").innerHTML = html;
+}
+
+function createArray(text){
+	return text.split(",");
+}
+
+function remplace(str,A,B) {
+	while(str.replace(A,B) != str) {
+		str = str.replace(A,B);
+	}
+	return str;
+}
+</script>
